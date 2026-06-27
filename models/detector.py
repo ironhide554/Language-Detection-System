@@ -1,0 +1,33 @@
+from transformers import pipeline
+import streamlit as st
+
+
+@st.cache_resource
+def load_model():
+    #Loads the Hugging Face language detection pipeline.
+    #Cached so it is loaded only once.
+    
+    detector = pipeline(
+        task="text-classification",
+        model="papluca/xlm-roberta-base-language-detection",
+        top_k=5
+    )
+    return detector
+
+
+class LanguageDetector:
+
+    def __init__(self):
+        self.model = load_model()
+
+    def detect(self, text: str):
+
+        result = self.model(text)[0]
+
+        top_prediction = result[0]
+
+        return {
+            "language": top_prediction["label"],
+            "confidence": round(top_prediction["score"] * 100, 2),
+            "predictions": result
+        }

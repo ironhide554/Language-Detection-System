@@ -9,21 +9,19 @@ st.set_page_config(
 
 st.title("🌍 Language Detection System")
 
-st.markdown(
-    """
-    Welcome to the **Language Detection System**.
-
-    Use the navigation menu on the left to access:
-
-    - 🏠 Home
-    - 📂 Batch Detection
-    - 📊 Evaluation
-    - 📈 Dashboard
-    - 🤖 Model Information
-    - ℹ️ About
-    """
+st.success(
+    "Use the navigation menu on the left to access the application pages."
 )
 
-st.info(
-    "Phase 1 completed successfully. The application structure is ready."
+st.markdown(
+"""
+## Features
+
+- Single Text Detection
+- Batch Detection (Coming Soon)
+- Evaluation on WiLI-2018
+- Dashboard
+- Model Information
+- Export Results
+"""
 )
