@@ -1,4 +1,5 @@
 import pandas as pd
+import io
 
 
 def create_prediction_dataframe(predictions):
@@ -14,3 +15,5 @@ def create_prediction_dataframe(predictions):
         )
 
     return pd.DataFrame(rows)
+
+
