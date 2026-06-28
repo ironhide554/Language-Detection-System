@@ -1,17 +1,6 @@
 from transformers import pipeline
 import streamlit as st
-
-
-@st.cache_resource
-def load_model():
-
-    detector = pipeline(
-        task="text-classification",
-        model="papluca/xlm-roberta-base-language-detection",
-        top_k=5,
-    )
-
-    return detector
+from models.loader import load_model
 
 
 class LanguageDetector:
