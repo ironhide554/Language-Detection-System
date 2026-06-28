@@ -1,4 +1,7 @@
 import streamlit as st
+from utils.styles import load_css
+
+load_css()
 
 st.title("📈 Dashboard")
 
