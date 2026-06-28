@@ -5,21 +5,12 @@ import pandas as pd
 import streamlit as st
 
 
-# =====================================================
-# Models
-# =====================================================
 
 from models.evaluator import ModelEvaluator
 
-# =====================================================
-# Utils
-# =====================================================
 
 from utils.styles import load_css
 
-# =====================================================
-# Page Config
-# =====================================================
 
 st.set_page_config(
     page_title="Model Evaluation",
@@ -29,9 +20,6 @@ st.set_page_config(
 
 load_css()
 
-# =====================================================
-# Title
-# =====================================================
 
 st.title("📊 Model Evaluation")
 
@@ -42,9 +30,6 @@ using the **WiLI-2018** dataset.
 """
 )
 
-# =====================================================
-# Sidebar
-# =====================================================
 
 with st.sidebar:
 
@@ -60,9 +45,7 @@ with st.sidebar:
         step=100
     )
 
-# =====================================================
-# Dataset Loading
-# =====================================================
+
 
 from datasets import load_dataset
 
@@ -88,14 +71,7 @@ st.success(
     f"Loaded {len(dataset)} evaluation samples."
 )
 
-# =====================================================
-# DataFrame
-# =====================================================
 
-
-# =====================================================
-# Dataset Statistics
-# =====================================================
 
 st.subheader("Dataset Information")
 
@@ -115,10 +91,6 @@ col3.metric(
     "Missing",
     dataset.isnull().sum().sum()
 )
-
-# =====================================================
-# Language Distribution
-# =====================================================
 
 distribution = (
     dataset["Language Code"]
@@ -141,9 +113,6 @@ with st.expander(
         use_container_width=True
     )
 
-# =====================================================
-# Preview
-# =====================================================
 
 st.subheader("Dataset Preview")
 
@@ -155,9 +124,7 @@ st.dataframe(
 
 st.divider()
 
-# =====================================================
-# Evaluation Button
-# =====================================================
+
 
 run_evaluation = st.button(
     "🚀 Start Evaluation",
@@ -168,9 +135,7 @@ if not run_evaluation:
 
     st.stop()
 
-# =====================================================
-# Initialize Evaluator
-# =====================================================
+
 
 evaluator = ModelEvaluator()
 
@@ -182,9 +147,7 @@ status.info(
     "Preparing evaluation..."
 )
 
-# =====================================================
-# Run Evaluation
-# =====================================================
+
 
 status.info("Running model evaluation...")
 
@@ -211,9 +174,7 @@ progress.progress(1.0)
 
 status.success("Evaluation completed successfully!")
 
-# =====================================================
-# Extract Results
-# =====================================================
+
 
 prediction_df = results["predictions"]
 
@@ -237,9 +198,7 @@ classification_report = results["classification_report"]
 
 confusion_matrix = results["confusion_matrix"]
 
-# =====================================================
-# Evaluation Metrics
-# =====================================================
+
 
 st.divider()
 
@@ -289,9 +248,6 @@ row2[3].metric(
     incorrect_predictions
 )
 
-# =====================================================
-# Prediction Preview
-# =====================================================
 
 st.divider()
 
@@ -303,9 +259,6 @@ st.dataframe(
     height=500,
 )
 
-# =====================================================
-# Search Predictions
-# =====================================================
 
 search_prediction = st.text_input(
     "Search Prediction"
@@ -331,9 +284,7 @@ st.dataframe(
     use_container_width=True,
 )
 
-# =====================================================
-# Classification Report
-# =====================================================
+
 
 st.divider()
 
@@ -348,9 +299,6 @@ st.dataframe(
     use_container_width=True,
 )
 
-# =====================================================
-# Performance Summary
-# =====================================================
 
 st.divider()
 
@@ -380,9 +328,7 @@ summary = f"""
 
 st.markdown(summary)
 
-# =====================================================
-# Download Evaluation Results
-# =====================================================
+
 
 st.divider()
 
@@ -412,9 +358,7 @@ with download_col2:
 
 st.divider()
 
-# =====================================================
-# Additional Imports
-# =====================================================
+
 
 import plotly.express as px
 import plotly.graph_objects as go
@@ -422,9 +366,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
-# =====================================================
-# Confusion Matrix
-# =====================================================
+
 
 st.header("📊 Confusion Matrix")
 
@@ -467,9 +409,6 @@ st.plotly_chart(
     use_container_width=True,
 )
 
-# =====================================================
-# Correct vs Incorrect
-# =====================================================
 
 st.divider()
 
@@ -500,9 +439,7 @@ st.plotly_chart(
     use_container_width=True,
 )
 
-# =====================================================
-# Confidence Histogram
-# =====================================================
+
 
 st.divider()
 
@@ -523,9 +460,7 @@ st.plotly_chart(
     use_container_width=True,
 )
 
-# =====================================================
-# Per-Language Accuracy
-# =====================================================
+
 
 st.divider()
 
@@ -566,9 +501,7 @@ st.plotly_chart(
     use_container_width=True,
 )
 
-# =====================================================
-# Most Misclassified Languages
-# =====================================================
+
 
 st.divider()
 
@@ -607,9 +540,6 @@ if not mis_summary.empty:
         use_container_width=True,
     )
 
-# =====================================================
-# Misclassified Samples
-# =====================================================
 
 st.divider()
 
@@ -621,9 +551,6 @@ st.dataframe(
     height=500,
 )
 
-# =====================================================
-# Final Evaluation Report
-# =====================================================
 
 st.divider()
 
@@ -653,9 +580,7 @@ Texts / Second : {texts_per_second}
 
 st.markdown(report)
 
-# =====================================================
-# Download Report
-# =====================================================
+
 
 st.download_button(
     label="⬇ Download Evaluation Report",
@@ -664,9 +589,6 @@ st.download_button(
     mime="text/plain",
 )
 
-# =====================================================
-# Footer
-# =====================================================
 
 st.divider()
 
