@@ -1,6 +1,5 @@
 from transformers import pipeline
 import streamlit as st
-from utils.language_mapping import get_language_name
 
 
 @st.cache_resource
