@@ -1,10 +1,3 @@
-"""
-=========================================================
-Project : Language Detection System
-File    : 6_About.py
-Purpose : About Project
-=========================================================
-"""
 
 from __future__ import annotations
 
@@ -13,9 +6,6 @@ import pandas as pd
 
 from utils.styles import load_css
 
-# =====================================================
-# Page Configuration
-# =====================================================
 
 st.set_page_config(
     page_title="About",
@@ -25,9 +15,6 @@ st.set_page_config(
 
 load_css()
 
-# =====================================================
-# Title
-# =====================================================
 
 st.title("ℹ About Language Detection System")
 
@@ -45,9 +32,7 @@ evaluation and analytics.
 
 st.divider()
 
-# =====================================================
-# Project Overview
-# =====================================================
+
 
 st.header("📌 Project Overview")
 
@@ -80,9 +65,6 @@ Transformer embeddings for more accurate predictions.
 
 st.divider()
 
-# =====================================================
-# Key Features
-# =====================================================
 
 st.header("🚀 Key Features")
 
@@ -116,9 +98,7 @@ for feature in features:
 
 st.divider()
 
-# =====================================================
-# Technologies Used
-# =====================================================
+
 
 st.header("🛠 Technologies")
 
@@ -174,9 +154,7 @@ st.dataframe(
 
 st.divider()
 
-# =====================================================
-# Project Workflow
-# =====================================================
+
 
 st.header("🔄 Project Workflow")
 
@@ -207,9 +185,7 @@ Dashboard / Reports
 
 st.divider()
 
-# =====================================================
-# Folder Structure
-# =====================================================
+
 
 st.header("📁 Project Structure")
 
@@ -232,9 +208,7 @@ language="text"
 
 st.divider()
 
-# =====================================================
-# System Modules
-# =====================================================
+
 
 st.header("📦 Modules")
 
@@ -276,6 +250,248 @@ modules = pd.DataFrame({
 
 st.dataframe(
     modules,
+    use_container_width=True,
+    hide_index=True
+)
+
+st.divider()
+
+st.header("🏗 System Architecture")
+
+st.info(
+"""
+The application follows a modular architecture where
+the user interface, prediction engine, analytics,
+and evaluation modules remain independent.
+This makes the project scalable and easier to maintain.
+"""
+)
+
+st.divider()
+
+
+
+st.header("🧠 NLP Pipeline")
+
+pipeline = pd.DataFrame({
+
+    "Stage":[
+        "Input",
+        "Preprocessing",
+        "Tokenization",
+        "Transformer",
+        "Classification",
+        "Confidence Estimation",
+        "Visualization"
+    ],
+
+    "Description":[
+        "User enters text",
+        "Cleaning and formatting",
+        "SentencePiece Tokenizer",
+        "XLM-RoBERTa Encoder",
+        "Language Prediction",
+        "Softmax Probabilities",
+        "Dashboard & Reports"
+    ]
+
+})
+
+st.dataframe(
+    pipeline,
+    use_container_width=True,
+    hide_index=True
+)
+
+st.divider()
+
+
+
+st.header("⚙ Processing Steps")
+
+steps = [
+
+    "Receive multilingual text input.",
+
+    "Validate input length.",
+
+    "Tokenize using SentencePiece.",
+
+    "Convert tokens into embeddings.",
+
+    "Pass embeddings through Transformer encoder.",
+
+    "Generate logits for all supported languages.",
+
+    "Apply Softmax to obtain probabilities.",
+
+    "Select Top-K predictions.",
+
+    "Display confidence scores.",
+
+    "Generate analytics and downloadable reports."
+
+]
+
+for i, step in enumerate(steps, start=1):
+
+    st.write(f"**Step {i}:** {step}")
+
+st.divider()
+
+
+st.header("📊 Evaluation Dataset")
+
+dataset = pd.DataFrame({
+
+    "Property":[
+        "Dataset",
+        "Languages",
+        "Task",
+        "Text Type",
+        "Evaluation"
+    ],
+
+    "Value":[
+        "Language Identification Benchmark",
+        "20 Supported Languages",
+        "Language Classification",
+        "Multilingual Sentences",
+        "Accuracy, Precision, Recall, F1"
+    ]
+
+})
+
+st.dataframe(
+    dataset,
+    use_container_width=True,
+    hide_index=True
+)
+
+st.divider()
+
+
+
+st.header("🎯 Project Objectives")
+
+objectives = [
+
+    "Develop an end-to-end multilingual language detection application.",
+
+    "Demonstrate Transformer-based Natural Language Processing.",
+
+    "Provide an intuitive user interface for language prediction.",
+
+    "Support both single and batch inference.",
+
+    "Visualize prediction statistics interactively.",
+
+    "Evaluate model performance using benchmark metrics.",
+
+    "Generate downloadable reports for users.",
+
+    "Create a portfolio-ready AI project."
+
+]
+
+for objective in objectives:
+
+    st.success(objective)
+
+st.divider()
+
+
+
+st.header("🔥 Challenges Faced")
+
+challenges = [
+
+    "Handling multilingual Unicode text.",
+
+    "Optimizing Transformer inference speed.",
+
+    "Building responsive Streamlit dashboards.",
+
+    "Managing prediction history efficiently.",
+
+    "Supporting multiple export formats.",
+
+    "Maintaining a modular project architecture.",
+
+    "Visualizing evaluation metrics effectively."
+
+]
+
+for challenge in challenges:
+
+    st.warning(challenge)
+
+st.divider()
+
+
+st.header("🚀 Future Enhancements")
+
+future = [
+
+    "Support 100+ languages.",
+
+    "Real-time speech language detection.",
+
+    "Language translation integration.",
+
+    "REST API deployment using FastAPI.",
+
+    "Docker containerization.",
+
+    "Cloud deployment (AWS / Azure / GCP).",
+
+    "User authentication and saved history.",
+
+    "Custom Transformer fine-tuning.",
+
+    "Automatic language correction.",
+
+    "Explainable AI (XAI) visualizations."
+
+]
+
+for item in future:
+
+    st.info(item)
+
+st.divider()
+
+
+st.header("📚 Learning Outcomes")
+
+learning = pd.DataFrame({
+
+    "Skill":[
+        "Natural Language Processing",
+        "Transformer Models",
+        "Deep Learning",
+        "Streamlit",
+        "Data Visualization",
+        "Model Evaluation",
+        "Software Engineering",
+        "Project Deployment"
+    ],
+
+    "Knowledge Gained":[
+        "Language Detection",
+        "XLM-RoBERTa",
+        "PyTorch",
+        "Interactive Applications",
+        "Plotly",
+        "Evaluation Metrics",
+        "Modular Architecture",
+        "Production-ready AI Systems"
+    ]
+
+})
+
+st.dataframe(
+    learning,
     use_container_width=True,
     hide_index=True
 )
