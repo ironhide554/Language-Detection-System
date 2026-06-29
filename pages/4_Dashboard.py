@@ -5,4 +5,4 @@ load_css()
 
 st.title("📈 Dashboard")
 
-st.write("Coming in Phase 5.")
+st.write("Coming in Next Phase!!")
