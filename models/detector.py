@@ -1,6 +1,15 @@
 from transformers import pipeline
 import streamlit as st
-from models.loader import load_model
+
+
+@st.cache_resource
+def load_model():
+
+    return pipeline(
+        "text-classification",
+        model="papluca/xlm-roberta-base-language-detection",
+        top_k=5
+    )
 
 
 class LanguageDetector:
@@ -9,25 +18,15 @@ class LanguageDetector:
 
         self.model = load_model()
 
-    def detect(self, text: str):
+    def detect(self, text):
 
         result = self.model(text)[0]
 
-        top_prediction = result[0]
+        best = result[0]
 
         return {
-
-            "language": top_prediction["label"],
-
-            # ISO language code
-            "code": top_prediction["label"],
-
-            "confidence": round(
-                top_prediction["score"] * 100,
-                2,
-            ),
-
+            "language": best["label"],
+            "code": best["label"],
+            "confidence": round(best["score"] * 100, 2),
             "predictions": result,
-
-            "text": text,
         }
